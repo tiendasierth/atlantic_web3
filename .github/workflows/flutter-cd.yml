@@ -29,14 +29,12 @@ jobs:
       - name: Get flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.16.8'
+          flutter-version: '3.27.0'
           channel: 'stable'
 
       - name: Show flutter version
         run: flutter --version
 
-      - name: Install melos CLI
-        run: flutter pub global activate melos
-
       - name: Install dependencies
-        run: melos run get --no-select
+        run: flutter pub get
+
