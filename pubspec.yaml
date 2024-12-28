@@ -1,11 +1,21 @@
 name: melos_atlantic_web3
+publish_to: none
 
 environment:
-  sdk: '>=2.18.0 <3.0.0'
+  sdk: ^3.6.0
 
 dependencies:
   flutter:
     sdk: flutter
 
-dev_dependencies:
-  melos: ^3.0.1
+workspace:
+  - packages/atlantic_web3
+  - packages/atlantic_web3_account
+  - packages/atlantic_web3_blockchain
+  - packages/atlantic_web3_contract
+  - packages/atlantic_web3_gasfee
+  - packages/atlantic_web3_passkey
+  - packages/atlantic_web3_storage
+  - packages/web3_providers_http
+  - packages/web3_providers_ipc
+  - packages/web3_providers_ws
