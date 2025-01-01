@@ -1,0 +1,225 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "atlantic_web3",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "atlantic_web3 (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "atlantic_web3 (release mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "atlantic_web3",
+            "cwd": "packages/atlantic_web3",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "atlantic_web3 (profile mode)",
+            "cwd": "packages/atlantic_web3",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "atlantic_web3 (release mode)",
+            "cwd": "packages/atlantic_web3",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "atlantic_web3_account",
+            "cwd": "packages/atlantic_web3_account",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "atlantic_web3_account (profile mode)",
+            "cwd": "packages/atlantic_web3_account",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "atlantic_web3_account (release mode)",
+            "cwd": "packages/atlantic_web3_account",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "atlantic_web3_blockchain",
+            "cwd": "packages/atlantic_web3_blockchain",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "atlantic_web3_blockchain (profile mode)",
+            "cwd": "packages/atlantic_web3_blockchain",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "atlantic_web3_blockchain (release mode)",
+            "cwd": "packages/atlantic_web3_blockchain",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "atlantic_web3_contract",
+            "cwd": "packages/atlantic_web3_contract",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "atlantic_web3_contract (profile mode)",
+            "cwd": "packages/atlantic_web3_contract",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "atlantic_web3_contract (release mode)",
+            "cwd": "packages/atlantic_web3_contract",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "atlantic_web3_gasfee",
+            "cwd": "packages/atlantic_web3_gasfee",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "atlantic_web3_gasfee (profile mode)",
+            "cwd": "packages/atlantic_web3_gasfee",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "atlantic_web3_gasfee (release mode)",
+            "cwd": "packages/atlantic_web3_gasfee",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "atlantic_web3_passkey",
+            "cwd": "packages/atlantic_web3_passkey",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "atlantic_web3_passkey (profile mode)",
+            "cwd": "packages/atlantic_web3_passkey",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "atlantic_web3_passkey (release mode)",
+            "cwd": "packages/atlantic_web3_passkey",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "atlantic_web3_storage",
+            "cwd": "packages/atlantic_web3_storage",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "atlantic_web3_storage (profile mode)",
+            "cwd": "packages/atlantic_web3_storage",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "atlantic_web3_storage (release mode)",
+            "cwd": "packages/atlantic_web3_storage",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "web3_providers_http",
+            "cwd": "packages/web3_providers_http",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "web3_providers_http (profile mode)",
+            "cwd": "packages/web3_providers_http",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "web3_providers_http (release mode)",
+            "cwd": "packages/web3_providers_http",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "web3_providers_ipc",
+            "cwd": "packages/web3_providers_ipc",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "web3_providers_ipc (profile mode)",
+            "cwd": "packages/web3_providers_ipc",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "web3_providers_ipc (release mode)",
+            "cwd": "packages/web3_providers_ipc",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "web3_providers_ws",
+            "cwd": "packages/web3_providers_ws",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "web3_providers_ws (profile mode)",
+            "cwd": "packages/web3_providers_ws",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "web3_providers_ws (release mode)",
+            "cwd": "packages/web3_providers_ws",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}
