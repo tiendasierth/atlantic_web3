@@ -86,7 +86,7 @@ class EthTransaction2 {
     return EthTransaction2(
       from: from ?? this.from,
       to: to ?? this.to,
-      gas: maxGas ?? this.gas,
+      gas: maxGas ?? gas,
       gasPrice: gasPrice ?? this.gasPrice,
       value: value ?? this.value,
       data: data ?? this.data,

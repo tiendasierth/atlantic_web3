@@ -1,4 +1,4 @@
-library json_rpc;
+library;
 
 import 'dart:async';
 import 'dart:convert';
@@ -29,7 +29,7 @@ abstract class RpcService {
 /// Json RPC Service.
 class JsonRPC extends RpcService {
   /// Constructor.
-  JsonRPC(String url, this.client) : super(url);
+  JsonRPC(super.url, this.client);
 
   /// Http client.
   final Client client;

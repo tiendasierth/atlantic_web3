@@ -3,7 +3,6 @@ import 'dart:typed_data';
 import '../../atlantic_web3.dart';
 
 abstract interface class IWeb3Blockchain {
-
   // IWeb3Contract contract(
   //     BaseProvider provider, ContractAbi abi, EthAddress address);
 

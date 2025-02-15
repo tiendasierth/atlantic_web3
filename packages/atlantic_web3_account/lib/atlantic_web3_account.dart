@@ -1,3 +1,3 @@
-library atlantic_web3_account;
+library;
 
 export 'src/web3_account.dart';

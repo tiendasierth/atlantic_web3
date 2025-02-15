@@ -27,7 +27,7 @@ abstract class BaseProvider {
 
   Future<T> request<T>(String function, [List<dynamic>? params]);
 
-  rpc.Peer? connectWithPeer(FilterEngine _filters);
+  rpc.Peer? connectWithPeer(FilterEngine filters);
 
   SocketConnector? getSocketConnector();
 

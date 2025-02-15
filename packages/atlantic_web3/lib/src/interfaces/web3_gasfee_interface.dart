@@ -1,3 +1,1 @@
-abstract interface class IWeb3GasFee {
-
-}
+abstract interface class IWeb3GasFee {}

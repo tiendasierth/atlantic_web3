@@ -1,4 +1,4 @@
-library atlantic_web3_blockchain;
+library;
 
 export 'package:atlantic_web3/atlantic_web3.dart';
 

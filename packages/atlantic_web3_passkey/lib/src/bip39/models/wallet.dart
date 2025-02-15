@@ -84,7 +84,8 @@ class _ScryptKeyDerivator extends _KeyDerivator {
 /// wallet is encrypted with a secret password that needs to be known in order
 /// to obtain the private key.
 class Wallet {
-  const Wallet._(this.passkey, this._derivator, this._password, this._iv, this._id);
+  const Wallet._(
+      this.passkey, this._derivator, this._password, this._iv, this._id);
 
   /// Creates a new wallet wrapping the specified [credentials] by encrypting
   /// the private key with the [password]. The [random] instance, which should
@@ -92,9 +93,13 @@ class Wallet {
   /// You can configure the parameter N of the scrypt algorithm if you need to.
   /// The default value for [scryptN] is 8192. Be aware that this N must be a
   /// power of two.
-  factory Wallet.createNew(EthPassKey credentials, String password, Random random,
-      {int scryptN = 8192, int p = 1,}) {
-
+  factory Wallet.createNew(
+    EthPassKey credentials,
+    String password,
+    Random random, {
+    int scryptN = 8192,
+    int p = 1,
+  }) {
     //
     final passwordBytes = Uint8List.fromList(utf8.encode(password));
     final dartRandom = RandomBridge(random);
@@ -252,7 +257,8 @@ class Wallet {
     return bytesToHex(keccak256(uint8ListFromList(macBody)));
   }
 
-  static CTRStreamCipher _initCipher(bool forEncryption, Uint8List key, Uint8List iv) {
+  static CTRStreamCipher _initCipher(
+      bool forEncryption, Uint8List key, Uint8List iv) {
     return CTRStreamCipher(AESEngine())
       ..init(false, ParametersWithIV(KeyParameter(key), iv));
   }

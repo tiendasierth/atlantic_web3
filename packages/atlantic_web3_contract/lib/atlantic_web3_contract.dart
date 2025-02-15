@@ -1,3 +1,3 @@
-library atlantic_web3_eth_contract;
+library;
 
 export 'src/web3_contract.dart';

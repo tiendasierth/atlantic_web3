@@ -2,7 +2,7 @@ import 'package:atlantic_web3/atlantic_web3.dart';
 
 final class Web3GasFee implements IWeb3GasFee {
   // Instancia privada
-  static Web3GasFee? _instance = null;
+  static Web3GasFee? _instance;
 
   static IWeb3GasFee instance() {
     if (_instance == null) {

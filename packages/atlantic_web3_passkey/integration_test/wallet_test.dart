@@ -9,7 +9,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'helpers/example_keystores.dart' as data;
 
 void main() {
-
   late IWeb3Passkey web3;
   late File tempDir;
   late Map wallets;
@@ -19,8 +18,6 @@ void main() {
     tempDir = File('');
     wallets = json.decode(data.content) as Map;
   });
-
-
 
   wallets.forEach((dynamic testName, dynamic content) {
     test(

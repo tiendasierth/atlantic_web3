@@ -29,7 +29,6 @@ void main() {
 
     //Set Default PassKey
     if (true) {
-
       final keypair = ECKeyPair.create(hexToBytes(
           '0x6ebd8ad6d4dca011cc43971d4b732137214595f42e3905b68bdc6d9e2d8a3405'));
 
@@ -37,12 +36,12 @@ void main() {
 
       const documentId = '3c5b0a43-e0c0-40ea-a698-fe88762382ff';
 
-      final EthPassKey passkey2 = await web3PassKey.saveEthPasskey(documentId, 'Mi Wallet', passKey);
+      final EthPassKey passkey2 =
+          await web3PassKey.saveEthPasskey(documentId, 'Mi Wallet', passKey);
     }
   });
 
   test('getBalance', () async {
-
     //final result = await web3.signOut();
 
     //print(result);
@@ -51,7 +50,6 @@ void main() {
   });
 
   test('signTransaction', () async {
-
     //final result = await web3.signOut();
 
     //print(result);
@@ -60,7 +58,6 @@ void main() {
   });
 
   test('sendTransaction', () async {
-
     //final result = await web3.signOut();
 
     //print(result);
@@ -69,7 +66,6 @@ void main() {
   });
 
   test('sendRawTransaction', () async {
-
     //final result = await web3.signOut();
 
     //print(result);
@@ -78,7 +74,6 @@ void main() {
   });
 
   test('sendRawTransaction', () async {
-
     //final result = await web3.signOut();
 
     //print(result);

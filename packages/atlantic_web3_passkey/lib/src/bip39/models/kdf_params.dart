@@ -1,4 +1,3 @@
-
 import 'package:atlantic_web3/atlantic_web3.dart';
 
 abstract interface class IKdfParams implements IEquatable<Object> {
@@ -15,6 +14,7 @@ final class Aes128CtrKdfParams implements IKdfParams {
 
   Aes128CtrKdfParams(this.dklen, this.c, this.prf, this.salt);
 
+  @override
   int getDklen() {
     return dklen;
   }
@@ -27,6 +27,7 @@ final class Aes128CtrKdfParams implements IKdfParams {
     return prf;
   }
 
+  @override
   String getSalt() {
     return salt;
   }
@@ -48,10 +49,14 @@ final class Aes128CtrKdfParams implements IKdfParams {
     if (c != that.c) {
       return false;
     }
-    if (getPrf() != null ? !getPrf().equals(that.getPrf()) : that.getPrf() != null) {
+    if (getPrf() != null
+        ? !getPrf().equals(that.getPrf())
+        : that.getPrf() != null) {
       return false;
     }
-    return getSalt() != null ? getSalt().equals(that.getSalt()) : that.getSalt() == null;
+    return getSalt() != null
+        ? getSalt().equals(that.getSalt())
+        : that.getSalt() == null;
   }
 
   @override
@@ -71,8 +76,9 @@ final class ScryptKdfParams implements IKdfParams {
   int r;
   String salt;
 
-  ScryptKdfParams(this.dklen, this.n, this.p, this.r, this.salt) {}
+  ScryptKdfParams(this.dklen, this.n, this.p, this.r, this.salt);
 
+  @override
   int getDklen() {
     return dklen;
   }
@@ -89,6 +95,7 @@ final class ScryptKdfParams implements IKdfParams {
     return r;
   }
 
+  @override
   String getSalt() {
     return salt;
   }
@@ -116,7 +123,9 @@ final class ScryptKdfParams implements IKdfParams {
     if (r != that.r) {
       return false;
     }
-    return getSalt() != null ? getSalt().equals(that.getSalt()) : that.getSalt() == null;
+    return getSalt() != null
+        ? getSalt().equals(that.getSalt())
+        : that.getSalt() == null;
   }
 
   @override

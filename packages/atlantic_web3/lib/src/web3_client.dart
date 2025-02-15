@@ -10,20 +10,24 @@ class Web3Client implements IWeb3Client {
   late final IWeb3Blockchain _eth;
 
   // Instancia privada
-  static Web3Client? _instance = null;
+  static Web3Client? _instance;
 
   static IWeb3Client get instance {
     if (_instance == null) {
-      throw new AssertionError('You must initialize the Web3Client instance before calling Web3Client.instance');
+      throw AssertionError(
+          'You must initialize the Web3Client instance before calling Web3Client.instance');
     }
     return _instance!;
   }
 
-  static Future<IWeb3Client> initialize({required String name, required BaseProvider provider,}) async {
+  static Future<IWeb3Client> initialize({
+    required String name,
+    required BaseProvider provider,
+  }) async {
     if (_instance == null) {
-       _instance = Web3Client._(name, provider);
+      _instance = Web3Client._(name, provider);
     } else {
-      throw new AssertionError('This instance is already initialized');
+      throw AssertionError('This instance is already initialized');
     }
     return _instance!;
   }
@@ -31,9 +35,9 @@ class Web3Client implements IWeb3Client {
   // ignore: sort_constructors_first
   Web3Client._(String name, BaseProvider provider) {
     // Principal
-    this._name = name;
-    this._version = 'v0.0.1';
-    this._provider = provider;
+    _name = name;
+    _version = 'v0.0.1';
+    _provider = provider;
     // Modules
     //this._eth = Web3Eth(_provider!);
   }

@@ -1,4 +1,3 @@
-
 import 'package:atlantic_web3/atlantic_web3.dart';
 
 abstract interface class IWeb3Passkey {
@@ -14,7 +13,8 @@ abstract interface class IWeb3Passkey {
   Future<Void> signOut();
 
   // se debe autenticar para escribir datos
-  Future<EthPassKey> saveEthPasskey(String documentId, String name, EthPassKey passKey);
+  Future<EthPassKey> saveEthPasskey(
+      String documentId, String name, EthPassKey passKey);
   Future<EthPassKey> setCurrentEthPasskey(String passKeyID);
   Future<Void> deleteAllEthPasskey();
   Future<Boolean> isEmpty();
@@ -23,5 +23,4 @@ abstract interface class IWeb3Passkey {
   Future<EthPassKey> getCurrentEthPassKey();
   Future<EthPassKey> getEthPasskey(String passKeyID);
   Future<List<EthPassKey>> getAllEthPasskey();
-
 }

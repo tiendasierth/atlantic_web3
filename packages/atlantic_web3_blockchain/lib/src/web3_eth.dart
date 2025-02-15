@@ -9,18 +9,15 @@ final class Web3Eth extends Sing implements IWeb3Blockchain {
   late final BaseProvider _provider;
   late final FilterEngine _filters;
 
-
-
   Web3Eth(BaseProvider provider) {
     // Principal
-    this._provider = provider;
-    this._filters = FilterEngine(_provider);
+    _provider = provider;
+    _filters = FilterEngine(_provider);
   }
 
   String _getBlockParam(EthBlockNum? block) {
     return (block ?? _defaultBlock).toBlockParam();
   }
-
 
   // IWeb3Contract contract(
   //         BaseProvider provider, ContractAbi abi, EthAddress address) =>
@@ -165,15 +162,13 @@ final class Web3Eth extends Sing implements IWeb3Blockchain {
     return _provider.request('web3_clientVersion');
   }
 
-  /**
-   * Returns the coinbase address to which mining rewards will go.
-   *
-   * ```dart
-   * web3.eth.getCoinbase()
-   *   .then(print);
-   *   > "0x11f4d0A3c12e86B4b5F39B213F7E19D048276DAe"
-   * ```
-   */
+  /// Returns the coinbase address to which mining rewards will go.
+  ///
+  /// ```dart
+  /// web3.eth.getCoinbase()
+  ///   .then(print);
+  ///   > "0x11f4d0A3c12e86B4b5F39B213F7E19D048276DAe"
+  /// ```
   @override
   Future<EthAccount> getCoinbase() async {
     final hex = await _provider.request<String>('eth_coinbase');
@@ -398,6 +393,7 @@ final class Web3Eth extends Sing implements IWeb3Blockchain {
   /// Returns a hash of the transaction which, after the transaction has been
   /// included in a mined block, can be used to obtain detailed information
   /// about the transaction.
+  @override
   Future<String> sendTransaction(
     Passkey cred,
     EthTransaction2 transaction, {
@@ -429,6 +425,7 @@ final class Web3Eth extends Sing implements IWeb3Blockchain {
   /// Returns a hash of the transaction which, after the transaction has been
   /// included in a mined block, can be used to obtain detailed information
   /// about the transaction.
+  @override
   Future<String> sendRawTransaction(Uint8List signedTransaction) async {
     return _provider.request('eth_sendRawTransaction', [
       bytesToHex(signedTransaction, include0x: true, padToEvenLength: true)
@@ -463,5 +460,4 @@ final class Web3Eth extends Sing implements IWeb3Blockchain {
   Future<int> getPeerCount() async {
     return _provider.request<int>('net_peerCount');
   }
-
 }

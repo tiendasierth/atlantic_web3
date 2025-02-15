@@ -6,7 +6,7 @@ final class Web3Account extends Sing implements IWeb3Account {
   static const EthBlockNum _defaultBlock = EthBlockNum.current();
 
   // Instancia privada
-  static Web3Account? _instance = null;
+  static Web3Account? _instance;
 
   static IWeb3Account instance() {
     if (_instance == null) {
@@ -38,7 +38,8 @@ final class Web3Account extends Sing implements IWeb3Account {
   /// This function allows specifying a custom block mined in the past to get
   /// historical data. By default, [BlockNum.current] will be used.
   @override
-  Future<EthAmount> getBalance(EthAccount address, {EthBlockNum? atBlock}) async {
+  Future<EthAmount> getBalance(EthAccount address,
+      {EthBlockNum? atBlock}) async {
     final blockParam = _getBlockParam(atBlock);
     final data = await _provider.request<String>(
       'eth_getBalance',
@@ -53,8 +54,8 @@ final class Web3Account extends Sing implements IWeb3Account {
   /// Returns a hash of the transaction which, after the transaction has been
   /// included in a mined block, can be used to obtain detailed information
   /// about the transaction.
-  Future<String> sendTransaction(
-      Passkey cred,
+  @override
+  Future<String> sendTransaction(Passkey cred,
       EthTransaction2 transaction, {
         int? chainId = 1,
         bool fetchChainIdFromNetworkId = false,
@@ -76,8 +77,6 @@ final class Web3Account extends Sing implements IWeb3Account {
     return sendRawTransaction(signed);
   }
 
-
-
   /// Sends a raw, signed transaction.
   ///
   /// To obtain a transaction in a signed form, use [signTransaction].
@@ -85,6 +84,7 @@ final class Web3Account extends Sing implements IWeb3Account {
   /// Returns a hash of the transaction which, after the transaction has been
   /// included in a mined block, can be used to obtain detailed information
   /// about the transaction.
+  @override
   Future<String> sendRawTransaction(Uint8List signedTransaction) async {
     return _provider.request('eth_sendRawTransaction', [
       bytesToHex(signedTransaction, include0x: true, padToEvenLength: true)
@@ -110,7 +110,7 @@ final class Web3Account extends Sing implements IWeb3Account {
             'gasPrice': '0x${transaction.gasPrice!.getInWei.toRadixString(16)}',
           if (transaction.input != null)
             'input':
-            bytesToHex(transaction.input as List<int>, include0x: true),
+                bytesToHex(transaction.input as List<int>, include0x: true),
         },
       ],
     );
@@ -141,7 +141,7 @@ final class Web3Account extends Sing implements IWeb3Account {
             'gasPrice': '0x${gasPrice.getInWei.toRadixString(16)}',
           if (maxPriorityFeePerGas != null)
             'maxPriorityFeePerGas':
-            '0x${maxPriorityFeePerGas.getInWei.toRadixString(16)}',
+                '0x${maxPriorityFeePerGas.getInWei.toRadixString(16)}',
           if (maxFeePerGas != null)
             'maxFeePerGas': '0x${maxFeePerGas.getInWei.toRadixString(16)}',
           if (data != null) 'data': bytesToHex(data, include0x: true),
@@ -179,7 +179,4 @@ final class Web3Account extends Sing implements IWeb3Account {
   BaseProvider getDefaultProvider() {
     return _provider;
   }
-
 }
-
-

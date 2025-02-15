@@ -5,9 +5,7 @@ import 'package:flutter_test/flutter_test.dart';
 void main() {
   late IWeb3Passkey web3;
 
-  setUp(() => {
-    web3 = Web3Passkey.instance()
-  });
+  setUp(() => {web3 = Web3Passkey.instance()});
 
   test('Web3Passkey.mnemonic() 01', () async {
     print("###############################################");
@@ -43,7 +41,8 @@ void main() {
     print('\n');
 
     // Max entropy = 256
-    final Mnemonic mnemonic = web3.generateMnemonic(length: 24, language: Language.spanish) as Mnemonic;
+    final Mnemonic mnemonic = web3.generateMnemonic(
+        length: 24, language: Language.spanish) as Mnemonic;
     print('Mnemonic: ${mnemonic.getWords()}');
     print('\n');
 
@@ -118,7 +117,8 @@ void main() {
     print('\n');
 
     // Crear clave semilla
-    final EthBip32PassKey seed = web3.createDerivateEthPassKey(mnemonic, "m/44'/60'/0'/0/0") as EthBip32PassKey;
+    final EthBip32PassKey seed = web3.createDerivateEthPassKey(
+        mnemonic, "m/44'/60'/0'/0/0") as EthBip32PassKey;
 
     // Crear private key
     final EthPassKey privatekey = seed.toMainPassKey();
@@ -137,4 +137,3 @@ void main() {
     print('Test passed !!!');
   });
 }
-

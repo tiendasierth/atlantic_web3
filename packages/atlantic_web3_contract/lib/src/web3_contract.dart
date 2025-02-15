@@ -6,7 +6,7 @@ final class Web3Contract extends Sing implements IWeb3Contract {
   static const EthBlockNum _defaultBlock = EthBlockNum.current();
 
   // Instancia privada
-  static Web3Contract? _instance = null;
+  static Web3Contract? _instance;
 
   static IWeb3Contract instance(ContractAbi abi, EthAccount address) {
     if (_instance == null) {
@@ -33,25 +33,29 @@ final class Web3Contract extends Sing implements IWeb3Contract {
 
   Web3Contract._(BaseProvider provider, ContractAbi abi, EthAccount address) {
     // Principal
-    this._provider = provider;
-    this._abi = abi;
-    this._address = address;
-    this._filters = FilterEngine(_provider);
+    _provider = provider;
+    _abi = abi;
+    _address = address;
+    _filters = FilterEngine(_provider);
   }
 
   String _getBlockParam(EthBlockNum? block) {
     return (block ?? _defaultBlock).toBlockParam();
   }
 
+  @override
   BaseProvider get provider => _provider;
 
+  @override
   ContractAbi get abi => _abi;
 
+  @override
   EthAccount get address => _address;
 
   /// Finds the event defined by the contract that has the matching [name].
   ///
   /// If no, or more than one event matches that name, this method will throw.
+  @override
   ContractEvent event(String name) =>
       _abi.events.singleWhere((e) => e.name == name);
 
@@ -60,6 +64,7 @@ final class Web3Contract extends Sing implements IWeb3Contract {
   ///
   /// If no, or more than one function matches that description, this method
   /// will throw.
+  @override
   ContractFunction function(String name) =>
       _abi.functions.singleWhere((f) => f.name == name);
 
@@ -67,6 +72,7 @@ final class Web3Contract extends Sing implements IWeb3Contract {
   /// the given name. As solidity supports function overloading, this will
   /// return a list as only a combination of name and types will uniquely find
   /// a function.
+  @override
   Iterable<ContractFunction> findFunctionsByName(String name) =>
       _abi.functions.where((f) => f.name == name);
 
@@ -149,7 +155,15 @@ final class Web3Contract extends Sing implements IWeb3Contract {
   }
 
   @override
-  Future<BigInt> estimateGas2({EthAccount? from, EthAccount? to, EthAmount? value, BigInt? gas, EthAmount? gasPrice, EthAmount? maxPriorityFeePerGas, EthAmount? maxFeePerGas, Uint8List? data}) {
+  Future<BigInt> estimateGas2(
+      {EthAccount? from,
+      EthAccount? to,
+      EthAmount? value,
+      BigInt? gas,
+      EthAmount? gasPrice,
+      EthAmount? maxPriorityFeePerGas,
+      EthAmount? maxFeePerGas,
+      Uint8List? data}) {
     // TODO: implement estimateGas2
     throw UnimplementedError();
   }

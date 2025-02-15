@@ -1,19 +1,17 @@
-
 import 'dart:math';
 import 'dart:typed_data';
 
 import 'package:atlantic_web3/atlantic_web3.dart';
-import 'package:atlantic_web3_passkey/atlantic_web3_passkey.dart';
 import 'package:atlantic_web3_passkey/src/bip39/words/word_list_en.dart';
 import 'package:atlantic_web3_passkey/src/bip39/words/word_list_es.dart';
 import 'package:crypto/crypto.dart';
 
 final class EthBip39Generator implements IBIP39 {
-
   /// Formula
   /// ENT = 128
   /// CS = ENT / 32
   /// MS = (ENT + CS) / 11
+  @override
   List<String> generateWordsRandomly(int length, Language language) {
     if (length % 3 != 0 && length >= 12 && length <= 32) {
       throw ArgumentError.value('The length must be 12, 15, 18, 21 or 24');
@@ -29,8 +27,8 @@ final class EthBip39Generator implements IBIP39 {
     }
 
     List<String> binary = (entropy.toBinary() +
-        _calculateBinaryChecksum(entropy) // add checksum at the end
-    )
+            _calculateBinaryChecksum(entropy) // add checksum at the end
+        )
         .split(''); // Make it a list
 
     final wordIndexes = Uint8List(length);

@@ -1,10 +1,9 @@
-
 import 'package:atlantic_web3/atlantic_web3.dart';
 
 class CipherParams implements IEquatable<Object> {
   String iv;
 
-  CipherParams(this.iv) {}
+  CipherParams(this.iv);
 
   String getIv() {
     return iv;
@@ -21,7 +20,9 @@ class CipherParams implements IEquatable<Object> {
 
     CipherParams that = o;
 
-    return getIv() != null ? getIv().equals(that.getIv()) : that.getIv() == null;
+    return getIv() != null
+        ? getIv().equals(that.getIv())
+        : that.getIv() == null;
   }
 
   @override

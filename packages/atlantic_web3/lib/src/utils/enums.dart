@@ -1,4 +1,1 @@
-enum Language {
-  english,
-  spanish
-}
+enum Language { english, spanish }

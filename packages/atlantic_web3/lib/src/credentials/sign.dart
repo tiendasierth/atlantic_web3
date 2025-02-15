@@ -4,7 +4,6 @@ import 'package:atlantic_web3/atlantic_web3.dart' as rlp;
 import 'package:atlantic_web3/atlantic_web3.dart';
 
 abstract class Sing {
-
   @Deprecated('Deprecated estimateGas2() use estimateGas()')
   Future<BigInt> estimateGas2({
     EthAccount? from,
@@ -23,18 +22,13 @@ abstract class Sing {
 
   Future<int> getTransactionCount(EthAccount address, {EthBlockNum? atBlock});
 
-
-
-
-
   /// Signs the [transaction] with the credentials [cred]. The transaction will
   /// not be sent.
   ///
   /// See also:
   ///  - [bytesToHex], which can be used to get the more common hexadecimal
   /// representation of the transaction.
-  Future<Uint8List> signTransaction(
-      Passkey cred,
+  Future<Uint8List> signTransaction(Passkey cred,
       EthTransaction2 transaction, {
         int? chainId = 1,
         bool fetchChainIdFromNetworkId = false,
@@ -89,14 +83,14 @@ abstract class Sing {
     final maxGas = transaction.gas ??
         await client!
             .estimateGas2(
-          from: sender,
-          to: transaction.to,
-          data: transaction.data,
-          value: transaction.value,
-          gasPrice: gasPrice,
-          maxPriorityFeePerGas: transaction.maxPriorityFeePerGas,
-          maxFeePerGas: transaction.maxFeePerGas,
-        )
+              from: sender,
+              to: transaction.to,
+              data: transaction.data,
+              value: transaction.value,
+              gasPrice: gasPrice,
+              maxPriorityFeePerGas: transaction.maxPriorityFeePerGas,
+              maxFeePerGas: transaction.maxFeePerGas,
+            )
             .then((bigInt) => bigInt.toInt());
 
     // apply default values to null fields
@@ -115,7 +109,7 @@ abstract class Sing {
     } else {
       final provider2 = client!.getDefaultProvider();
       resolvedChainId =
-      await provider2.request<String>('net_version').then(int.parse);
+          await provider2.request<String>('net_version').then(int.parse);
     }
 
     return _SigningInput(
@@ -125,11 +119,9 @@ abstract class Sing {
     );
   }
 
-  Uint8List _signTransaction(
-      EthTransaction2 transaction,
+  Uint8List _signTransaction(EthTransaction2 transaction,
       Passkey c,
-      int? chainId,
-      ) {
+      int? chainId,) {
     if (transaction.isEIP1559 && chainId != null) {
       final encodedTx = LengthTrackingByteSink();
       encodedTx.addByte(0x02);
@@ -162,13 +154,9 @@ abstract class Sing {
     return uint8ListFromList(rlp.encode(_encodeToRlp(transaction, signature)));
   }
 
-
-
-  List<dynamic> _encodeEIP1559ToRlp(
-      EthTransaction2 transaction,
+  List<dynamic> _encodeEIP1559ToRlp(EthTransaction2 transaction,
       MsgSignature? signature,
-      BigInt chainId,
-      ) {
+      BigInt chainId,) {
     final list = [
       chainId,
       transaction.nonce,
@@ -199,8 +187,7 @@ abstract class Sing {
     return list;
   }
 
-  List<dynamic> _encodeToRlp(
-      EthTransaction2 transaction,
+  List<dynamic> _encodeToRlp(EthTransaction2 transaction,
       MsgSignature? signature) {
     final list = [
       transaction.nonce,
@@ -227,8 +214,6 @@ abstract class Sing {
 
     return list;
   }
-
-
 
   static Uint8List prependTransactionType(int type, Uint8List transaction) {
     return Uint8List(transaction.length + 1)

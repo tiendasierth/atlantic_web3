@@ -1,3 +1,3 @@
-library atlantic_web3_gasfee;
+library;
 
 export 'src/web3_gasfee.dart';

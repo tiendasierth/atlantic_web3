@@ -24,9 +24,9 @@ class FilterEngine {
     // parametros
     final myFilter = filter;
     final myIsPubSub = filter.supportsPubSub && pubSubAvailable;
-    final myCallBack = () {
+    myCallBack() {
       _pendingUnsubcriptions.add(uninstall(instantiated));
-    };
+    }
 
     // crear instancia
     instantiated = _InstantiatedFilter(myFilter, myIsPubSub, myCallBack);

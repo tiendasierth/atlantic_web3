@@ -9,7 +9,7 @@ final class EthPublicKey {
 
   Uint8List get bytes => intToBytes(_publicKey);
 
-  String get hex => '0x' + bytesToHex(bytes);
+  String get hex => '0x${bytesToHex(bytes)}';
 
   BigInt get publicKey => _publicKey;
 }

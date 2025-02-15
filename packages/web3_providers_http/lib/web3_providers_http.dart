@@ -1,3 +1,3 @@
-library web3_providers_http;
+library;
 
 export 'src/http_provider.dart';

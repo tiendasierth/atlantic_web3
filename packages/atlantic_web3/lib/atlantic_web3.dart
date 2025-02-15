@@ -1,4 +1,4 @@
-library atlantic_web3;
+library;
 
 export 'package:convert/convert.dart';
 

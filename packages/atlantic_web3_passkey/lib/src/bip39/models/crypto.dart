@@ -13,8 +13,8 @@ final class Crypto implements IEquatable<Object> {
 
   String mac;
 
-  Crypto(this.cipher, this.ciphertext,
-      this.cipherparams, this.kdf, this.kdfparams, this.mac);
+  Crypto(this.cipher, this.ciphertext, this.cipherparams, this.kdf,
+      this.kdfparams, this.mac);
 
   String getCipher() {
     return cipher;
@@ -69,7 +69,7 @@ final class Crypto implements IEquatable<Object> {
     if (this == o) {
       return true;
     }
-    if (!(o is Crypto)) {
+    if (o is! Crypto) {
       return false;
     }
 
@@ -90,7 +90,9 @@ final class Crypto implements IEquatable<Object> {
         : that.getCipherparams() != null) {
       return false;
     }
-    if (getKdf() != null ? !getKdf().equals(that.getKdf()) : that.getKdf() != null) {
+    if (getKdf() != null
+        ? !getKdf().equals(that.getKdf())
+        : that.getKdf() != null) {
       return false;
     }
     if (getKdfparams() != null
@@ -98,16 +100,21 @@ final class Crypto implements IEquatable<Object> {
         : that.getKdfparams() != null) {
       return false;
     }
-    return getMac() != null ? getMac().equals(that.getMac()) : that.getMac() == null;
+    return getMac() != null
+        ? getMac().equals(that.getMac())
+        : that.getMac() == null;
   }
 
   @override
   int get hashCode {
     int result = getCipher() != null ? getCipher().hashCode : 0;
-    result = 31 * result + (getCiphertext() != null ? getCiphertext().hashCode : 0);
-    result = 31 * result + (getCipherparams() != null ? getCipherparams().hashCode : 0);
+    result =
+        31 * result + (getCiphertext() != null ? getCiphertext().hashCode : 0);
+    result = 31 * result +
+        (getCipherparams() != null ? getCipherparams().hashCode : 0);
     result = 31 * result + (getKdf() != null ? getKdf().hashCode : 0);
-    result = 31 * result + (getKdfparams() != null ? getKdfparams().hashCode : 0);
+    result =
+        31 * result + (getKdfparams() != null ? getKdfparams().hashCode : 0);
     result = 31 * result + (getMac() != null ? getMac().hashCode : 0);
     return result;
   }

@@ -16,7 +16,7 @@ class InvalidPrivateKeyError extends BaseWeb3Error {
 class InvalidSignatureError extends BaseWeb3Error {
   final int code = ERR_INVALID_SIGNATURE;
 
-  InvalidSignatureError(String errorDetails) : super('${errorDetails}');
+  InvalidSignatureError(super.errorDetails);
 }
 
 class InvalidKdfError extends BaseWeb3Error {

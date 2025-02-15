@@ -3,19 +3,21 @@ import 'dart:typed_data';
 import 'package:atlantic_web3/atlantic_web3.dart';
 import 'package:atlantic_web3/src/crypto/secp256k1.dart' as secp256k1;
 
-
 /// Credenciales que pueden firmar cargas útiles con una clave privada de Ethereum.
-final class EthPassKey extends PasskeyWithKnownAccount implements IEquatable<EthPassKey> {
-
-  EthPassKey.fromInt(BigInt keyInt) : this.fromBytes(unsignedIntToBytes(keyInt));
+final class EthPassKey extends PasskeyWithKnownAccount
+    implements IEquatable<EthPassKey> {
+  EthPassKey.fromInt(BigInt keyInt)
+      : this.fromBytes(unsignedIntToBytes(keyInt));
 
   EthPassKey.fromHex(String hex) : this.fromBytes(hexToBytes(hex));
 
-  EthPassKey.fromBytes(Uint8List bytes) : this.fromKeyPair(ECKeyPair.create(bytes));
+  EthPassKey.fromBytes(Uint8List bytes)
+      : this.fromKeyPair(ECKeyPair.create(bytes));
 
   EthPassKey.fromKeyPair(this._keyPair);
-  EthPassKey.fromKeyPairExtender(this._keyPair, this._documentID, this._name, this._photoURL);
 
+  EthPassKey.fromKeyPairExtender(
+      this._keyPair, this._documentID, this._name, this._photoURL);
 
   /// ECC's d private parameter.
   final ECKeyPair _keyPair;
@@ -38,7 +40,8 @@ final class EthPassKey extends PasskeyWithKnownAccount implements IEquatable<Eth
 
   @override
   EthAccount getEthAccount() {
-    return EthAccount(publicKeyToAddress(privateKeyToPublic(_keyPair.privateKey)));
+    return EthAccount(
+        publicKeyToAddress(privateKeyToPublic(_keyPair.privateKey)));
   }
 
   @override
@@ -62,7 +65,11 @@ final class EthPassKey extends PasskeyWithKnownAccount implements IEquatable<Eth
   }
 
   @override
-  MsgSignature signToEcSignature(Uint8List payload, {int? chainId, bool isEIP1559 = false,}) {
+  MsgSignature signToEcSignature(
+    Uint8List payload, {
+    int? chainId,
+    bool isEIP1559 = false,
+  }) {
     final signature = secp256k1.sign(keccak256(payload), _keyPair.bytes);
 
     // https://github.com/ethereumjs/ethereumjs-util/blob/8ffe697fafb33cefc7b7ec01c11e3a7da787fe0e/src/signature.ts#L26
@@ -81,9 +88,7 @@ final class EthPassKey extends PasskeyWithKnownAccount implements IEquatable<Eth
   @override
   Boolean equals(EthPassKey other) {
     return identical(this, other) ||
-        other is EthPassKey &&
-            runtimeType == other.runtimeType &&
-            _keyPair.equals(other.keyPair);
+        runtimeType == other.runtimeType && _keyPair.equals(other.keyPair);
   }
 
   @override
@@ -101,6 +106,4 @@ final class EthPassKey extends PasskeyWithKnownAccount implements IEquatable<Eth
         'photoURL: $_photoURL, '
         'isolateSafe: $isolateSafe}';
   }
-
-
 }

@@ -15,13 +15,10 @@ abstract class Passkey {
 
   /// Signs the [payload] with a private key and returns the obtained
   /// signature.
-  MsgSignature signToEcSignature(
-      Uint8List payload, {
-        int? chainId,
-        bool isEIP1559 = false,
-      });
-
-
+  MsgSignature signToEcSignature(Uint8List payload, {
+    int? chainId,
+    bool isEIP1559 = false,
+  });
 
   /// Signs the [payload] with a private key. The output will be like the
   /// bytes representation of the [eth_sign RPC method](https://github.com/ethereum/wiki/wiki/JSON-RPC#eth_sign),
@@ -42,7 +39,6 @@ abstract class Passkey {
     // https://github.com/ethereumjs/ethereumjs-util/blob/8ffe697fafb33cefc7b7ec01c11e3a7da787fe0e/src/signature.ts#L63
     return uint8ListFromList(r + s + v);
   }
-
 
   /// Signs an Ethereum specific signature. This method is equivalent to
   /// [signToUint8List], but with a special prefix so that this method can't be used to

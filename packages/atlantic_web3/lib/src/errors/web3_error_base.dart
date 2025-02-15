@@ -9,5 +9,5 @@ abstract class BaseWeb3Error extends Error implements Exception {
 }
 
 abstract class InvalidValueError extends BaseWeb3Error {
-  InvalidValueError(String msg) : super(msg);
+  InvalidValueError(super.msg);
 }

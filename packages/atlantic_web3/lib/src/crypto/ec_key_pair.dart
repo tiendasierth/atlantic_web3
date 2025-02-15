@@ -1,8 +1,6 @@
-
 import 'dart:typed_data';
 
 import 'package:atlantic_web3/atlantic_web3.dart';
-
 
 class ECKeyPair implements IEquatable<ECKeyPair> {
   late Uint8List _seed;
@@ -17,8 +15,8 @@ class ECKeyPair implements IEquatable<ECKeyPair> {
 
   ECKeyPair.fromKeyPairString(String privateKey, String publicKey) {
     _seed = hexToBytes(privateKey);
-    _privateKey = bytesToUnsignedInt( hexToBytes(privateKey) );
-    _publicKey = bytesToUnsignedInt( hexToBytes(publicKey) );
+    _privateKey = bytesToUnsignedInt(hexToBytes(privateKey));
+    _publicKey = bytesToUnsignedInt(hexToBytes(publicKey));
   }
 
   ECKeyPair.fromKeyPairInt(BigInteger privateKey, BigInteger publicKey) {
@@ -37,8 +35,7 @@ class ECKeyPair implements IEquatable<ECKeyPair> {
 
   @override
   Boolean equals(ECKeyPair param) {
-    return publicKey == param.publicKey
-        && privateKey == param.privateKey;
+    return publicKey == param.publicKey && privateKey == param.privateKey;
   }
 
   @override

@@ -5,18 +5,18 @@ class ConnectionError extends BaseWeb3Error {
   int? errorCode;
   String? errorReason;
 
-  ConnectionError(String message, ConnectionEvent? event, int code)
-      : super(message) {
+  ConnectionError(super.message, ConnectionEvent? event, int code) {
     this.code = code;
-    this.errorCode = event?.code;
-    this.errorReason = event?.reason;
+    errorCode = event?.code;
+    errorReason = event?.reason;
   }
 
+  @override
   toJSON() {
     return {
       ...super.toJSON(),
-      "errorCode": this.errorCode,
-      "errorReason": this.errorReason
+      "errorCode": errorCode,
+      "errorReason": errorReason
     };
   }
 }
@@ -25,11 +25,12 @@ class InvalidConnectionError extends ConnectionError {
   String host;
 
   InvalidConnectionError(this.host, ConnectionEvent event)
-      : super("CONNECTION ERROR: Couldn't connect to node ${host}.", event,
+      : super("CONNECTION ERROR: Couldn't connect to node $host.", event,
             ERR_CONN_INVALID);
 
+  @override
   toJSON() {
-    return {...super.toJSON(), host: this.host};
+    return {...super.toJSON(), host: host};
   }
 }
 
@@ -40,8 +41,9 @@ class ConnectionTimeoutError extends ConnectionError {
       : super("CONNECTION TIMEOUT: timeout of ${duration}ms achieved", null,
             ERR_CONN_TIMEOUT);
 
+  @override
   toJSON() {
-    return {...super.toJSON(), "duration": this.duration};
+    return {...super.toJSON(), "duration": duration};
   }
 }
 
@@ -61,7 +63,7 @@ class ConnectionCloseError extends ConnectionError {
 class MaxAttemptsReachedOnReconnectingError extends ConnectionError {
   MaxAttemptsReachedOnReconnectingError(int numberOfAttempts)
       : super(
-            "Maximum number of reconnect attempts reached! (${numberOfAttempts})",
+            "Maximum number of reconnect attempts reached! ($numberOfAttempts)",
             null,
             ERR_CONN_MAX_ATTEMPTS);
 }
@@ -76,7 +78,7 @@ class PendingRequestsOnReconnectingError extends ConnectionError {
 
 class RequestAlreadySentError extends ConnectionError {
   RequestAlreadySentError(int id)
-      : super("Request already sent with following id: ${id}", null,
+      : super("Request already sent with following id: $id", null,
             ERR_REQ_ALREADY_SENT);
 }
 

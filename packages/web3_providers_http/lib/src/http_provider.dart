@@ -28,6 +28,7 @@ class HttpProvider extends BaseProvider {
     _jsonRpc = JsonRPC(url, httpClient);
   }
 
+  @override
   Future<T> request<T>(String function, [List<dynamic>? params]) async {
     try {
       final data = await _jsonRpc.call(function, params);
@@ -43,27 +44,30 @@ class HttpProvider extends BaseProvider {
     }
   }
 
-  rpc.Peer? connectWithPeer(FilterEngine _filters) {
+  @override
+  rpc.Peer? connectWithPeer(FilterEngine filters) {
     if (_streamRpcPeer != null && !_streamRpcPeer!.isClosed) {
       return _streamRpcPeer;
     }
     if (_socketConnector == null) return null;
 
-    final socket = _socketConnector!();
+    final socket = _socketConnector();
     _streamRpcPeer = rpc.Peer(socket)
-      ..registerMethod('eth_subscription', _filters.handlePubSubNotification);
+      ..registerMethod('eth_subscription', filters.handlePubSubNotification);
 
     _streamRpcPeer?.listen().then((dynamic _) {
       // .listen() will complete when the socket is closed, so reset client
       _streamRpcPeer = null;
-      _filters.handleConnectionClosed();
+      filters.handleConnectionClosed();
     });
 
     return _streamRpcPeer;
   }
 
+  @override
   SocketConnector? getSocketConnector() => _socketConnector;
 
+  @override
   Future? dispose() {
     return _streamRpcPeer?.close();
   }
