@@ -28,11 +28,12 @@ abstract class Sing {
   /// See also:
   ///  - [bytesToHex], which can be used to get the more common hexadecimal
   /// representation of the transaction.
-  Future<Uint8List> signTransaction(Passkey cred,
-      EthTransaction2 transaction, {
-        int? chainId = 1,
-        bool fetchChainIdFromNetworkId = false,
-      }) async {
+  Future<Uint8List> signTransaction(
+    Passkey cred,
+    EthTransaction2 transaction, {
+    int? chainId = 1,
+    bool fetchChainIdFromNetworkId = false,
+  }) async {
     final signingInput = await _fillMissingData(
       credentials: cred as PasskeyWithKnownAccount,
       transaction: transaction,
@@ -119,9 +120,11 @@ abstract class Sing {
     );
   }
 
-  Uint8List _signTransaction(EthTransaction2 transaction,
-      Passkey c,
-      int? chainId,) {
+  Uint8List _signTransaction(
+    EthTransaction2 transaction,
+    Passkey c,
+    int? chainId,
+  ) {
     if (transaction.isEIP1559 && chainId != null) {
       final encodedTx = LengthTrackingByteSink();
       encodedTx.addByte(0x02);
@@ -154,9 +157,11 @@ abstract class Sing {
     return uint8ListFromList(rlp.encode(_encodeToRlp(transaction, signature)));
   }
 
-  List<dynamic> _encodeEIP1559ToRlp(EthTransaction2 transaction,
-      MsgSignature? signature,
-      BigInt chainId,) {
+  List<dynamic> _encodeEIP1559ToRlp(
+    EthTransaction2 transaction,
+    MsgSignature? signature,
+    BigInt chainId,
+  ) {
     final list = [
       chainId,
       transaction.nonce,
@@ -187,8 +192,8 @@ abstract class Sing {
     return list;
   }
 
-  List<dynamic> _encodeToRlp(EthTransaction2 transaction,
-      MsgSignature? signature) {
+  List<dynamic> _encodeToRlp(
+      EthTransaction2 transaction, MsgSignature? signature) {
     final list = [
       transaction.nonce,
       transaction.gasPrice?.getInWei,

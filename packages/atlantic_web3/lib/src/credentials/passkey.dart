@@ -15,7 +15,8 @@ abstract class Passkey {
 
   /// Signs the [payload] with a private key and returns the obtained
   /// signature.
-  MsgSignature signToEcSignature(Uint8List payload, {
+  MsgSignature signToEcSignature(
+    Uint8List payload, {
     int? chainId,
     bool isEIP1559 = false,
   });

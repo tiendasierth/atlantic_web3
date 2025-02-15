@@ -55,11 +55,12 @@ final class Web3Account extends Sing implements IWeb3Account {
   /// included in a mined block, can be used to obtain detailed information
   /// about the transaction.
   @override
-  Future<String> sendTransaction(Passkey cred,
-      EthTransaction2 transaction, {
-        int? chainId = 1,
-        bool fetchChainIdFromNetworkId = false,
-      }) async {
+  Future<String> sendTransaction(
+    Passkey cred,
+    EthTransaction2 transaction, {
+    int? chainId = 1,
+    bool fetchChainIdFromNetworkId = false,
+  }) async {
     if (cred is CustomTransactionSender) {
       return cred.sendTransaction(transaction);
     }

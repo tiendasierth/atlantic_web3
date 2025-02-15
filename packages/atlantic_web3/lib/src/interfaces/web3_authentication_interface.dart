@@ -5,11 +5,12 @@ import 'package:atlantic_web3/atlantic_web3.dart';
 abstract interface class IWeb3Account {
   Future<EthAmount> getBalance(EthAccount address, {EthBlockNum? atBlock});
 
-  Future<String> sendTransaction(Passkey cred,
-      EthTransaction2 transaction, {
-        int? chainId = 1,
-        bool fetchChainIdFromNetworkId = false,
-      });
+  Future<String> sendTransaction(
+    Passkey cred,
+    EthTransaction2 transaction, {
+    int? chainId = 1,
+    bool fetchChainIdFromNetworkId = false,
+  });
 
   Future<String> sendRawTransaction(Uint8List signedTransaction);
 
