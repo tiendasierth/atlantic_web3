@@ -5,7 +5,7 @@ final class Sqlite3Helper {
 
   static Boolean sqliteToBoolean(Integer input) => input == 1 ? true : false;
 
-  static String dateToSqlite(DateTime input) => input.toString();
+  static String dateToSqlite(DateTime input) => input.toIso8601String();
 
   static DateTime sqliteToDate(String input) {
     if (input.isDate()) {
